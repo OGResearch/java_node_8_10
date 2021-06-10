@@ -1,6 +1,5 @@
+FROM node:10-alpine
 LABEL maintainer "Frantisek Simorda <frantisek.simorda@ogresearch.com>"
-
-FROM node:10.16.3-alpine
 
 # install JRE 8 see: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
 
