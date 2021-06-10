@@ -21,4 +21,7 @@ RUN set -x \
 		openjdk8 \
 		alpine-sdk \
 		python2 \
+		autoconf \
+		nasm \
+		zlib \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
