@@ -26,5 +26,5 @@ RUN set -x \
 	&& apk add --no-cache \
 		openjdk8 \
 		git \
-		python2
+		python2 \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
