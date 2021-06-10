@@ -21,4 +21,8 @@ RUN set -x \
 		openjdk8 \
 		git \
 		python2 \
+		build-base \
+		gcc \ 
+		abuild \
+		binutils \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
