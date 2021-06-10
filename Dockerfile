@@ -1,24 +1,31 @@
 LABEL maintainer "Frantisek Simorda <frantisek.simorda@ogresearch.com>"
 
-FROM alpine:3.10
+FROM node:10.16.3-alpine
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+# install JRE 8 see: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
 
-RUN wget --quiet https://cdn.azul.com/public_keys/alpine-signing@azul.com-5d5dc44c.rsa.pub -P /etc/apk/keys/ && \
-    echo "https://repos.azul.com/zulu/alpine" >> /etc/apk/repositories && \
-    apk --no-cache add zulu8-jdk
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
 
-ENV JAVA_HOME=/usr/lib/jvm/zulu8-ca
-ARG REFRESHED_AT
-ENV REFRESHED_AT $REFRESHED_AT
+# add a simple script that can auto-detect the appropriate JAVA_HOME value
+# based on whether the JDK or only the JRE is installed
+RUN { \
+		echo '#!/bin/sh'; \
+		echo 'set -e'; \
+		echo; \
+		echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
+	} > /usr/local/bin/docker-java-home \
+	&& chmod +x /usr/local/bin/docker-java-home
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
 
-RUN apk -U upgrade \
-  && apk add --repository https://dl-cdn.alpinelinux.org/alpine/v3.10/main/ --no-cache \
-    "nodejs<10" \
-    "nodejs-npm<10" \
-    yarn \
-    git \
-    python2 \
-    curl
+ENV JAVA_VERSION 8u212
+ENV JAVA_ALPINE_VERSION 8.212.04-r1
+ENV GIT_VERSION 2.20.1-r0
+
+RUN set -x \
+	&& apk add --no-cache \
+		openjdk8="$JAVA_ALPINE_VERSION" \
+		git="$GIT_VERSION"\
+        python2 \
+	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
