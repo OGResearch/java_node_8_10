@@ -25,4 +25,5 @@ RUN set -x \
 		gcc \ 
 		abuild \
 		binutils \
+		make \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
