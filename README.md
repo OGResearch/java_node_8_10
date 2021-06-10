@@ -1,2 +1,2 @@
-# java_node_8_10
-Alpine Linux with Java OpenJDK 8, Node 10 and git.
+# Docker: Java 8 + NodeJS 10
+Alpine Linux with OpenJDK 8, NodeJS 10, Python 2.7 and git

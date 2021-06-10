@@ -1,8 +1,6 @@
 FROM node:10-alpine
 LABEL maintainer "Frantisek Simorda <frantisek.simorda@ogresearch.com>"
 
-# install JRE 8 see: https://github.com/docker-library/openjdk/blob/master/8/jre/alpine/Dockerfile
-
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
 
@@ -17,10 +15,6 @@ RUN { \
 	&& chmod +x /usr/local/bin/docker-java-home
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
-
-ENV JAVA_VERSION 8u212
-ENV JAVA_ALPINE_VERSION 8.212.04-r1
-ENV GIT_VERSION 2.20.1-r0
 
 RUN set -x \
 	&& apk add --no-cache \
