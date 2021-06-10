@@ -6,8 +6,8 @@ ENV REFRESHED_AT $REFRESHED_AT
 
 RUN apk -U upgrade \
   && apk add --repository https://dl-cdn.alpinelinux.org/alpine/v3.12/main/ --no-cache \
-    "nodejs<14" \
-    "nodejs-npm<14" \
+    "nodejs<12" \
+    "nodejs-npm<12" \
     yarn \
     git \
     python2 \
