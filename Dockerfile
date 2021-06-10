@@ -23,5 +23,5 @@ RUN set -x \
 		python2 \
 		autoconf \
 		nasm \
-		zlib \
+		libc6-compat \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
