@@ -24,6 +24,7 @@ ENV GIT_VERSION 2.20.1-r0
 
 RUN set -x \
 	&& apk add --no-cache \
-		openjdk8="$JAVA_ALPINE_VERSION" \
-		git="$GIT_VERSION"\
+		openjdk8 \
+		git \
+		python2
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
