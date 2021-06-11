@@ -27,3 +27,4 @@ RUN set -x \
 		libtool \
 		automake \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
+	&& npm i -g bower
