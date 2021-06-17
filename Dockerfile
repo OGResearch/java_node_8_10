@@ -28,4 +28,5 @@ RUN set -x \
 		automake \
 		bash \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ] \
-	&& npm i -g bower
+	&& npm i -g bower \
+	&& yarn global add bower
