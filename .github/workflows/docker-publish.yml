@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: teamcty/java_node_8_10:latest
+          tags: teamcity/java_node_8_10:latest
