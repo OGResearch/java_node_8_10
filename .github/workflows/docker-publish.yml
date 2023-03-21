@@ -16,7 +16,7 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          registry: https://nexus.ogresearch.com:17236
+          registry: https://nexus.ogresearch.com:17237
           username: ${{ secrets.NEXUS_USERNAME }}
           password: ${{ secrets.NEXUS_PASSWORD }}
       -
@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: nexus.ogresearch.com:17236/teamcity/java_node_8_10:latest
+          tags: nexus.ogresearch.com:17237/teamcity/java_node_8_10:latest
