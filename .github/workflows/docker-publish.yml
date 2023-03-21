@@ -16,7 +16,7 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          registry: https://nexus.ogresearch.com/repository/teamcity/
+          registry: https://nexus.ogresearch.com/repository/teamcity:25565
           username: ${{ secrets.NEXUS_USERNAME }}
           password: ${{ secrets.NEXUS_PASSWORD }}
       -
