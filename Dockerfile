@@ -29,4 +29,5 @@ RUN set -x \
 		bash \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ] \
 	&& npm i -g bower \
-	&& yarn global add bower
+	&& yarn global add bower \
+        && echo '{ "allow_root": true }' > /root/.bowerrc
